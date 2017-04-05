@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile
+  has_many :labs
+  has_many :laboratories, through: :labs
+  has_many :tests, through: :labs
+  has_many :test_types, through: :tests
 
   delegate :firstname, to: :profile, allow_nil: true
   delegate :lastname, to: :profile, allow_nil: true

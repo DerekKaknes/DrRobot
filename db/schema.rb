@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405154234) do
+ActiveRecord::Schema.define(version: 20170405175603) do
+
+  create_table "laboratories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "laboratories", ["name"], name: "index_laboratories_on_name", unique: true
+
+  create_table "labs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "order_date"
+    t.date     "collection_date"
+    t.date     "report_date"
+    t.string   "requesting_physician"
+    t.integer  "laboratory_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "labs", ["laboratory_id"], name: "index_labs_on_laboratory_id"
+  add_index "labs", ["user_id"], name: "index_labs_on_user_id"
 
   create_table "profiles", force: :cascade do |t|
     t.string   "firstname"
@@ -26,6 +48,38 @@ ActiveRecord::Schema.define(version: 20170405154234) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
+  create_table "test_types", force: :cascade do |t|
+    t.string   "name",                 null: false
+    t.text     "description"
+    t.float    "reference_range_low"
+    t.float    "reference_range_high"
+    t.integer  "unit_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "test_types", ["name"], name: "index_test_types_on_name", unique: true
+  add_index "test_types", ["unit_id"], name: "index_test_types_on_unit_id"
+
+  create_table "tests", force: :cascade do |t|
+    t.integer  "lab_id"
+    t.integer  "test_type_id"
+    t.float    "value"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "tests", ["lab_id"], name: "index_tests_on_lab_id"
+  add_index "tests", ["test_type_id"], name: "index_tests_on_test_type_id"
+
+  create_table "units", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "units", ["name"], name: "index_units_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
