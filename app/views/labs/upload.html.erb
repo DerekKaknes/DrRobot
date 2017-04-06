@@ -1,0 +1,15 @@
+<h1>Labs#upload</h1>
+<table>
+  <tr>
+    <th>Test Name</th>
+    <th>Your Value</th>
+    <th>Reference Range</th>
+  </tr>
+<% @lab.tests.each do |test| %>
+  <tr>
+    <td><%= test.name %></td>
+    <td><%= test.value %></td>
+    <td><%= test.reference_range %></td>
+  </tr>
+<% end %>
+</table.

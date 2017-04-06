@@ -1,0 +1,10 @@
+<div>
+<%= form_for @lab, url: labs_upload_path do |f| %>
+  <div>
+  <%= f.file_field :pdf %>
+  </div>
+  <div>
+  <%= f.submit "Upload PDF" %>
+  </div>
+<% end %>
+</div>

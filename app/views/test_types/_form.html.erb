@@ -1,0 +1,23 @@
+<%= form_for(test_type) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br/>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br/>
+  <%= f.label :reference_type %>
+  <%= f.select :reference_type, [["Range", "range"], [">= Minimum", "minimum"], ["<= Maximum", "maximum"]] %>
+  <br/>
+  <%= f.label :reference_range_low %>
+  <%= f.text_field :reference_range_low %>
+  <%= f.label :reference_range_high %>
+  <%= f.text_field :reference_range_high %>
+  <br/>
+  <%= f.label :unit %>
+  <%= f.collection_select :unit_id, Unit.all, :id, :name %>
+  <%= f.fields_for :unit do |u| %>
+    <%= u.text_field :name %>
+  <% end %>
+  <br/>
+  <%= f.submit %>
+<% end %>

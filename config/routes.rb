@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+
   devise_for :users
   get 'welcome/home'
 
   root "welcome#home"
+
+  post 'labs/upload', to: "labs#upload"
+  resources :labs, only: [:new, :create]
+  resources :test_types, only: [:index, :show, :new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
