@@ -23,7 +23,7 @@ class TestTypesController < ApplicationController
   private
 
   def set_test_type
-    TestType.find(params[:id])
+    @test_type = TestType.find(params[:id])
   end
 
   def test_type_params

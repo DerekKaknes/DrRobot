@@ -11,8 +11,13 @@ RSpec.describe TestTypesController, type: :controller do
 
   describe "GET #create" do
     it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+      p = {test_type: {
+        name: "Test Test"
+        }
+      }
+
+      get :create, p
+      expect(response).to have_http_status(:redirect)
     end
   end
 
@@ -25,7 +30,7 @@ RSpec.describe TestTypesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, id: TestType.first
       expect(response).to have_http_status(:success)
     end
   end
