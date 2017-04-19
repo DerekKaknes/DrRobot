@@ -1,28 +1,10 @@
-== README
+== DrRobot
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+DrRobot is an application intended to help individuals acquire, track and take
+action based upon medical lab results.  The objective is to provide motivated
+individuals with a well-documented history of their main lab results (Blood
+Count, Basic Metabolic, and Lipids) and to educate them about risk areas that
+are detectable from their lab results.  The goal is to enable individuals to
+more effectively take control of their own primary care, as well as to provide
+them with more precise information about their own health that they can then
+share with their PCP during brief annual visits.
